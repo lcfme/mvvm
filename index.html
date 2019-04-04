@@ -27,8 +27,10 @@
           向数组中减少元素
         </div>
         <div mvvm-for="array" class="example">
-          <div mvvm-bind="$item"></div>
-          <span v-bind="$index"></span>
+          <div
+            mvvm-bind="$item + ' ' + $index"
+            mvvm-click="upText($item + ' ' + $index)"
+          ></div>
         </div>
 
         <div mvvm-for="($outer) in darr">
@@ -62,6 +64,9 @@
           }
           scope.array.push("元素" + scope.counter++);
           scope.text = "添加了新元素";
+        };
+        scope.upText = function(text) {
+          scope.text = text;
         };
         scope.darr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
       });

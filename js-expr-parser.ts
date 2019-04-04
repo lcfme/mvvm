@@ -43,7 +43,7 @@ function Lexer(input: any): CompilerPrototype<string, string, Token<any>> {
     }
     next(): Token<any> {
       skipWhiteSpace(this);
-      let ch = this.peek();
+      const ch = this.peek();
       if (ch === "") {
         return null;
       }
