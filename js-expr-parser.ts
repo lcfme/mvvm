@@ -9,10 +9,10 @@ interface Token<T> {
   Value: T;
 }
 
-const OPERATORS = ["=", ""];
+const OPERATORS = [];
 
 const PRIFIX_OPERATOR = [];
-const INFIX_OPERATOR = ["+="];
+const INFIX_OPERATOR = [];
 const POSTFIX_OPERATOR = [];
 
 function Lexer(input: any): CompilerPrototype<string, string, Token<any>> {
