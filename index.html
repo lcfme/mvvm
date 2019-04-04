@@ -15,11 +15,11 @@
   <body>
     <div mvvm-app="app">
       <div mvvm-controller="my-controller">
-        <!-- <div mvvm-bind="text"></div>
+        <div mvvm-bind="text"></div>
         <input type="text" mvvm-model="text" />
         <a href="javascript:;" mvvm-click="reverse($event, text)"
           >reverse your word</a
-        > -->
+        >
         <div mvvm-click="upArr()">
           向数组中追加元素
         </div>
@@ -31,7 +31,7 @@
           <span v-bind="$index"></span>
         </div>
 
-        <!-- <div mvvm-for="($outer) in darr">
+        <div mvvm-for="($outer) in darr">
           <div>
             <span
               mvvm-for="($inner) in $outer"
@@ -39,7 +39,7 @@
               mvvm-click="$inner = $inner * 3"
             ></span>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <script>
