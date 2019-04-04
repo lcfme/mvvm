@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="mvvm.js"></script>
+    <script src="util.js"></script>
+    <script src="watcher.js"></script>
+    <script src="scope.js"></script>
+    <script src="dom-compiler.js"></script>
+    <script src="built-in.js"></script>
+    <title>MVVM</title>
+  </head>
+  <body>
+    <div mvvm-app="app">
+      <div mvvm-controller="my-controller">
+        <!-- <div mvvm-bind="text"></div>
+        <input type="text" mvvm-model="text" />
+        <a href="javascript:;" mvvm-click="reverse($event, text)"
+          >reverse your word</a
+        > -->
+        <div mvvm-click="upArr()">
+          向数组中追加元素
+        </div>
+        <div mvvm-click="upArr(true)">
+          向数组中减少元素
+        </div>
+        <div mvvm-for="array" class="example">
+          <div mvvm-bind="$item"></div>
+          <span v-bind="$index"></span>
+        </div>
+
+        <!-- <div mvvm-for="($outer) in darr">
+          <div>
+            <span
+              mvvm-for="($inner) in $outer"
+              mvvm-bind="$inner"
+              mvvm-click="$inner = $inner * 3"
+            ></span>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <script>
+      MVVM.controller("my-controller", function(scope) {
+        scope.text = "Hello World";
+        scope.array = [];
+        scope.counter = 0;
+        scope.reverse = function($event, text) {
+          console.log($event);
+          scope.text = scope.text
+            .split("")
+            .reverse()
+            .join("");
+        };
+        scope.upArr = function(flag) {
+          if (flag) {
+            scope.array.pop();
+            scope.text = "减少了元素";
+            return;
+          }
+          scope.array.push("元素" + scope.counter++);
+          scope.text = "添加了新元素";
+        };
+        scope.darr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+      });
+    </script>
+  </body>
+</html>
